@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌾 FasalAI — AI Crop Advisory System
 ### Final Year Project | Software Engineering | Team of 3
 
@@ -84,3 +85,7 @@ src/
 - Connect Login/Register to backend APIs
 - Add user authentication with JWT
 - Build the crop image upload page
+=======
+# fasal-ai
+AI-Powered Crop Advisory System — Final Year Project
+>>>>>>> 7466b2336080896f654e43e052f119cab46e54cf
