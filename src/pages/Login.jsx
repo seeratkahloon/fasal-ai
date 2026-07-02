@@ -17,16 +17,29 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const e2 = validate();
-    if (Object.keys(e2).length) { setErrors(e2); return; }
-    setLoading(true);
-    // TODO: connect to backend /api/auth/login
-    setTimeout(() => {
-      setLoading(false);
-      alert("Login API will connect here!");
-    }, 1000);
-  };
+  e.preventDefault();
+  const e2 = validate();
+  if (Object.keys(e2).length) { setErrors(e2); return; }
+  setLoading(true);
+  try {
+    const response = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: form.email, password: form.password }),
+    });
+    const data = await response.json();
+    if (data.success) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      window.location.href = "/dashboard";
+    } else {
+      setErrors({ email: data.message });
+    }
+  } catch {
+    setErrors({ email: "Server error. Make sure backend is running." });
+  }
+  setLoading(false);
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-white flex items-center justify-center px-4 pt-20">
