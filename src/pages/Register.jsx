@@ -21,16 +21,34 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const e2 = validate();
-    if (Object.keys(e2).length) { setErrors(e2); return; }
-    setLoading(true);
-    // TODO: connect to backend /api/auth/register
-    setTimeout(() => {
-      setLoading(false);
-      alert("Register API will connect here!");
-    }, 1000);
-  };
+   e.preventDefault();
+  const e2 = validate();
+   if (Object.keys(e2).length) { setErrors(e2); return; }
+   setLoading(true);
+  try {
+    const response = await fetch("http://localhost:5000/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name:     form.name,
+        email:    form.email,
+        password: form.password,
+        cropType: form.cropType,
+      }),
+    });
+    const data = await response.json();
+    if (data.success) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      window.location.href = "/dashboard";
+    } else {
+      setErrors({ email: data.message });
+    }
+  } catch {
+    setErrors({ email: "Server error. Make sure backend is running on port 5000." });
+  }
+  setLoading(false);
+};
 
   const field = (key, label, type = "text", placeholder = "") => (
     <div>
