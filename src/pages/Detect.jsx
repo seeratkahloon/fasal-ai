@@ -17,7 +17,7 @@ const Detect = () => {
     const file = e.target.files[0];
     if (!file) return;
     if (!file.type.startsWith("image/")) { setError("Please upload an image file."); return; }
-    if (file.size > 5 * 1024 * 1024)    { setError("Image must be less than 5MB."); return; }
+    if (file.size > 5 * 1024 * 1024) { setError("Image must be less than 5MB."); return; }
     setError("");
     setImage(file);
     setPreview(URL.createObjectURL(file));
@@ -32,12 +32,57 @@ const Detect = () => {
   const handleSubmit = async () => {
     if (!image)    { setError("Please upload a crop image."); return; }
     if (!cropType) { setError("Please select a crop type."); return; }
+    
     setLoading(true);
-    // TODO: send to backend /api/detect with FormData
-    setTimeout(() => {
-      setLoading(false);
-      navigate("/result", { state: { disease: "Leaf Rust", confidence: 94, crop: cropType, description } });
-    }, 2000);
+    setError("");
+
+    try {
+      const token = localStorage.getItem("token");
+      
+      if (!token) {
+        setError("Please login first.");
+        setLoading(false);
+        navigate("/login");
+        return;
+      }
+
+      console.log("Sending request to backend...");
+      
+      const formData = new FormData();
+      formData.append("image",       image);
+      formData.append("cropType",    cropType);
+      formData.append("description", description);
+
+      const response = await fetch("http://localhost:5000/api/reports/detect", {
+        method:  "POST",
+        headers: { "Authorization": `Bearer ${token}` },
+        body:    formData,
+      });
+
+      console.log("Response status:", response.status);
+      const data = await response.json();
+      console.log("Response data:", data);
+
+      if (data.success) {
+        navigate("/result", {
+          state: {
+            disease:    data.report.disease,
+            confidence: data.report.confidence,
+            severity:   data.report.severity,
+            crop:       data.report.cropType,
+            treatment:  data.report.treatment,
+            prevention: data.report.prevention,
+            imageUrl:   data.report.imageUrl,
+          }
+        });
+      } else {
+        setError(data.message || "Detection failed. Try again.");
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      setError("Cannot connect to server. Make sure backend is running on port 5000.");
+    }
+    setLoading(false);
   };
 
   return (
@@ -91,13 +136,11 @@ const Detect = () => {
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Describe the Problem <span className="text-gray-400">(optional)</span>
             </label>
-            <textarea
-              rows={3}
+            <textarea rows={3}
               placeholder="e.g. Yellow spots on leaves, wilting, unusual color..."
               className="input-field resize-none"
               value={description}
-              onChange={(e) => setDesc(e.target.value)}
-            />
+              onChange={(e) => setDesc(e.target.value)} />
           </div>
 
           {error && <p className="text-red-500 text-sm bg-red-50 px-4 py-2 rounded-lg">{error}</p>}

@@ -12,7 +12,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([
     { role: "assistant", text: "السلام علیکم! I'm your FasalAI farming assistant 🌾 Ask me anything about your crops, diseases, weather, or farming tips — in Urdu or English!" }
   ]);
-  const [input, setInput]   = useState("");
+  const [input, setInput]     = useState("");
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef(null);
 
@@ -28,22 +28,33 @@ const Chat = () => {
     setLoading(true);
 
     try {
-      // TODO: replace with your backend /api/chat endpoint
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const token = localStorage.getItem("token");
+      console.log("Sending chat message...", userText);
+      
+      const response = await fetch("http://localhost:5000/api/chat", {
+        method:  "POST",
+        headers: {
+          "Content-Type":  "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
         body: JSON.stringify({
-          model: "claude-sonnet-4-6",
-          max_tokens: 1000,
-          system: "You are FasalAI, an expert farming assistant for Pakistani farmers. Answer questions about crops, diseases, fertilizers, weather, and farming best practices. Keep answers concise, practical, and friendly. You can respond in Urdu or English based on what the user uses.",
-          messages: [{ role: "user", content: userText }],
+          message: userText,
+          history: messages,
         }),
       });
+
+      console.log("Chat response status:", response.status);
       const data = await response.json();
-      const reply = data.content?.[0]?.text || "Sorry, I could not get a response. Please try again.";
-      setMessages((prev) => [...prev, { role: "assistant", text: reply }]);
-    } catch {
-      setMessages((prev) => [...prev, { role: "assistant", text: "Connection error. Please check your internet and try again." }]);
+      console.log("Chat response data:", data);
+
+      if (data.success) {
+        setMessages((prev) => [...prev, { role: "assistant", text: data.reply }]);
+      } else {
+        setMessages((prev) => [...prev, { role: "assistant", text: `Error: ${data.message}` }]);
+      }
+    } catch (err) {
+      console.error("Chat error:", err);
+      setMessages((prev) => [...prev, { role: "assistant", text: "Connection error. Make sure backend is running on port 5000." }]);
     }
     setLoading(false);
   };
