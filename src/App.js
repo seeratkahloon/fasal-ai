@@ -14,6 +14,7 @@ import Weather from "./pages/Weather";
 import History from "./pages/History";
 import ReportDetail from "./pages/ReportDetail";
 import Tips from "./pages/Tips";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/weather"     element={<Weather />} />
             <Route path="/history"     element={<History />} />
             <Route path="/history/:id" element={<ReportDetail />} />
+            <Route path="*" element={<NotFound />} />
             <Route path="/tips"        element={<Tips />} />
           </Routes>
         </main>
