@@ -14,17 +14,13 @@ module.exports = {
           700: "#15803d",
           800: "#166534",
           900: "#14532d",
+          950: "#052e16",
         },
-        earth: {
-          100: "#fef3c7",
-          400: "#d97706",
-          600: "#92400e",
-        }
       },
       fontFamily: {
         display: ["'Playfair Display'", "serif"],
         body:    ["'Inter'", "sans-serif"],
-      }
+      },
     }
   },
   plugins: []

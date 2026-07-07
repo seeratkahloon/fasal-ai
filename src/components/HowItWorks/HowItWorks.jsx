@@ -11,7 +11,7 @@ const HowItWorks = () => (
   <section id="how-it-works" className="py-24 bg-primary-50">
     <div className="max-w-5xl mx-auto px-6">
       <div className="text-center mb-14">
-        <h2 className="section-title">How It Works</h2>
+        <h2 className="section-title">Detect Disease in 4 Simple Steps</h2>
         <p className="section-subtitle">Four simple steps to protect your crops with AI.</p>
       </div>
 

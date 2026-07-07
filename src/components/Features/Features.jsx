@@ -38,7 +38,7 @@ const Features = () => (
   <section id="features" className="py-24 bg-white">
     <div className="max-w-6xl mx-auto px-6">
       <div className="text-center mb-14">
-        <h2 className="section-title">Everything a Farmer Needs</h2>
+        <h2 className="section-title">Built for Pakistani Farmers</h2>
         <p className="section-subtitle">
           Powered by AI, designed for simplicity — from disease detection to daily weather tips.
         </p>

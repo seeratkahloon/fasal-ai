@@ -3,15 +3,15 @@ import React, { useState } from "react";
 const categories = ["All", "Wheat", "Rice", "Cotton", "Vegetables", "Seasonal", "Pest Control"];
 
 const tips = [
-  { id: 1, category: "Wheat",       emoji: "🌾", title: "Best Time to Sow Wheat",         body: "Sow wheat in November for best yields in Punjab. Early sowing leads to better tillering and higher production." },
-  { id: 2, category: "Seasonal",    emoji: "☀️", title: "Summer Irrigation Tips",          body: "In peak summer, irrigate crops early morning (before 8 AM) or evening (after 6 PM) to reduce evaporation loss." },
-  { id: 3, category: "Pest Control",emoji: "🐛", title: "Natural Pest Repellents",         body: "Neem oil spray (5ml per litre of water) is an effective, low-cost organic pesticide for most common pests." },
-  { id: 4, category: "Rice",        emoji: "🌾", title: "Rice Transplanting Guide",        body: "Transplant rice seedlings when they are 25–30 days old. Maintain 2–3 inches of standing water during early growth." },
-  { id: 5, category: "Cotton",      emoji: "🌿", title: "Cotton Fertilizer Schedule",      body: "Apply DAP at sowing, then urea at 30 and 60 days after germination for optimal cotton boll development." },
-  { id: 6, category: "Vegetables",  emoji: "🥦", title: "Companion Planting for Veggies", body: "Plant marigolds near tomatoes and peppers to naturally repel aphids and whiteflies without chemicals." },
-  { id: 7, category: "Seasonal",    emoji: "🌧️", title: "Pre-Monsoon Crop Preparation",   body: "Before monsoon season, improve field drainage channels. Waterlogging for over 24 hours can kill most crops." },
-  { id: 8, category: "Pest Control",emoji: "🦗", title: "Whitefly Management in Cotton",  body: "Monitor cotton leaves weekly. If whitefly count exceeds 8 per leaf, apply imidacloprid 70WS at recommended dose." },
-  { id: 9, category: "Wheat",       emoji: "💧", title: "Wheat Irrigation Schedule",      body: "Wheat needs 4–6 irrigations. Critical stages: crown root initiation, tillering, jointing, flowering, and grain filling." },
+  { id: 1, category: "Wheat",           title: "Best Time to Sow Wheat",         body: "Sow wheat in November for best yields in Punjab. Early sowing leads to better tillering and higher production." },
+  { id: 2, category: "Seasonal",        title: "Summer Irrigation Tips",          body: "In peak summer, irrigate crops early morning (before 8 AM) or evening (after 6 PM) to reduce evaporation loss." },
+  { id: 3, category: "Pest Control",    title: "Natural Pest Repellents",         body: "Neem oil spray (5ml per litre of water) is an effective, low-cost organic pesticide for most common pests." },
+  { id: 4, category: "Rice",            title: "Rice Transplanting Guide",        body: "Transplant rice seedlings when they are 25–30 days old. Maintain 2–3 inches of standing water during early growth." },
+  { id: 5, category: "Cotton",          title: "Cotton Fertilizer Schedule",      body: "Apply DAP at sowing, then urea at 30 and 60 days after germination for optimal cotton boll development." },
+  { id: 6, category: "Vegetables",      title: "Companion Planting for Veggies",  body: "Plant marigolds near tomatoes and peppers to naturally repel aphids and whiteflies without chemicals." },
+  { id: 7, category: "Seasonal",        title: "Pre-Monsoon Crop Preparation",    body: "Before monsoon season, improve field drainage channels. Waterlogging for over 24 hours can kill most crops." },
+  { id: 8, category: "Pest Control",    title: "Whitefly Management in Cotton",   body: "Monitor cotton leaves weekly. If whitefly count exceeds 8 per leaf, apply imidacloprid 70WS at recommended dose." },
+  { id: 9, category: "Wheat",           title: "Wheat Irrigation Schedule",       body: "Wheat needs 4–6 irrigations. Critical stages: crown root initiation, tillering, jointing, flowering, and grain filling." },
 ];
 
 const Tips = () => {
