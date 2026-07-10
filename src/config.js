@@ -1,5 +1,5 @@
 const config = {
-  API_URL: "https://your-app-name.b4a.run/api",
+  API_URL: "https://fasalai-6awohbll.b4a.run/api",
 };
 
 export default config;
