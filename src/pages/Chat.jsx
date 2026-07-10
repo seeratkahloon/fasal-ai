@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaRobot, FaPaperPlane, FaLeaf, FaSpinner } from "react-icons/fa";
 
+
 const suggestions = [
   "How do I treat leaf rust in wheat?",
   "Best fertilizer for cotton crop?",
@@ -59,15 +60,14 @@ const Chat = () => {
     setLoading(false);
   };
 
-  return (
-    <div className="min-h-screen bg-gray-50 pt-20 pb-0 flex flex-col">
-      <div className="max-w-3xl mx-auto w-full px-4 flex flex-col flex-grow" style={{ height: "calc(100vh - 80px)" }}>
-
-        {/* Header */}
-        <div className="bg-white rounded-t-3xl shadow-sm px-6 py-4 flex items-center gap-3 mt-4">
-          <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+ return (
+   <div className="min-h-screen bg-gray-50 pt-20 pb-0 flex flex-col">
+    
+             {/* Header */}
+         <div className="bg-white rounded-t-3xl shadow-sm px-6 py-4 flex items-center gap-3 mt-4">
+           <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
             <FaRobot className="text-primary-600" />
-          </div>
+           </div>
           <div>
             <h2 className="font-display font-bold text-gray-900">FasalAI Assistant</h2>
             <p className="text-xs text-green-500 font-medium">● Online — Ask in Urdu or English</p>
@@ -133,9 +133,8 @@ const Chat = () => {
             <FaPaperPlane />
           </button>
         </div>
-
-      </div>
-    </div>
+     </div>
+  
   );
 };
 

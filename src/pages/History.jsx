@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaSearch, FaLeaf, FaChevronRight, FaFileAlt, FaSpinner } from "react-icons/fa";
 
+
 const severityStyle = {
   High:     "bg-red-100 text-red-600",
   Moderate: "bg-yellow-100 text-yellow-600",

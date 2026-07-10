@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 const categories = ["All", "Wheat", "Rice", "Cotton", "Vegetables", "Seasonal", "Pest Control"];
 
 const tips = [

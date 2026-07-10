@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { FaArrowLeft, FaDownload, FaCheckCircle, FaLeaf, FaSpinner } from "react-icons/fa";
 import jsPDF from "jspdf";
 
+
 const ReportDetail = () => {
   const { id } = useParams();
   const [report, setReport]   = useState(null);

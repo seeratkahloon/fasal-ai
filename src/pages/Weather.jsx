@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaCloudSun, FaWind, FaTint, FaThermometerHalf, FaSearch, FaSpinner } from "react-icons/fa";
 
+
 const Weather = () => {
   const [city, setCity]       = useState("Sargodha");
   const [weather, setWeather] = useState(null);

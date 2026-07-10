@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaSeedling, FaBars, FaTimes, FaUser, FaSignOutAlt, FaTachometerAlt } from "react-icons/fa";
+import { FaSeedling, FaBars, FaTimes, FaUser, FaSignOutAlt, FaTachometerAlt, FaArrowLeft } from "react-icons/fa";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen]     = useState(false);
@@ -10,6 +10,8 @@ const Navbar = () => {
   const dropdownRef                 = useRef(null);
   const navigate  = useNavigate();
   const location  = useLocation();
+  const isHomePage    = location.pathname === "/";
+  const isTransparent = isHomePage && !scrolled;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -56,24 +58,29 @@ const Navbar = () => {
     ? allNavLinks.filter((l) => l.to !== location.pathname)
     : guestLinks.filter((l) => l.to !== location.pathname);
 
-  const isHomePage = location.pathname === "/";
-  const isTransparent = isHomePage && !scrolled;
-
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isTransparent
-        ? "bg-transparent"
-        : "bg-green-950 shadow-lg"
+      isTransparent ? "bg-transparent" : "bg-green-950 shadow-lg"
     }`}>
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 text-white font-display font-bold text-xl">
-          <div className="w-9 h-9 bg-green-500 rounded-xl flex items-center justify-center">
-            <FaSeedling className="text-white text-lg" />
-          </div>
-          FasalAI
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-2 text-white font-display font-bold text-xl">
+            <div className="w-9 h-9 bg-green-500 rounded-xl flex items-center justify-center">
+              <FaSeedling className="text-white text-lg" />
+            </div>
+            FasalAI
+          </Link>
+
+          {/* Back Button */}
+          {!isHomePage && (
+            <button onClick={() => navigate(-1)}
+              className="hidden md:flex items-center gap-1 text-green-300 hover:text-white text-sm font-medium transition ml-2">
+              <FaArrowLeft className="text-xs" /> Back
+            </button>
+          )}
+        </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
@@ -145,6 +152,12 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-green-950 px-6 py-4 flex flex-col gap-4 border-t border-green-800">
+          {!isHomePage && (
+            <button onClick={() => { navigate(-1); setMenuOpen(false); }}
+              className="flex items-center gap-1 text-green-300 text-sm font-medium">
+              <FaArrowLeft className="text-xs" /> Back
+            </button>
+          )}
           {navLinks.map((link) => (
             <Link key={link.label} to={link.to}
               className="text-green-100 font-medium hover:text-green-400"
