@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply font-body text-gray-800 bg-white;
+    @apply font-body text-gray-800 bg-gray-50;
   }
   h1, h2, h3 {
     @apply font-display;
@@ -14,23 +14,56 @@
 }
 
 @layer components {
+
+  /* Buttons */
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg;
+    @apply bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg;
   }
   .btn-outline {
-    @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200;
+    @apply border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200;
   }
+  .btn-dark {
+    @apply bg-green-950 hover:bg-green-900 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200;
+  }
+  .btn-white {
+    @apply bg-white hover:bg-gray-50 text-green-900 font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-md;
+  }
+
+  /* Cards */
   .card {
-    @apply bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-shadow duration-300;
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow duration-300;
   }
+  .card-dark {
+    @apply bg-green-950 rounded-2xl p-6 text-white;
+  }
+
+  /* Inputs */
   .input-field {
-    @apply w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition;
+    @apply w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition bg-white text-gray-900;
   }
+
+  /* Typography */
   .section-title {
     @apply font-display text-3xl md:text-4xl font-bold text-gray-900;
   }
   .section-subtitle {
     @apply text-gray-500 text-lg mt-3 max-w-xl mx-auto;
+  }
+
+  /* Dark sidebar layout */
+  .dark-sidebar {
+    @apply bg-green-950 text-white;
+  }
+
+  /* Badge */
+  .badge-green {
+    @apply bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full;
+  }
+  .badge-red {
+    @apply bg-red-100 text-red-600 text-xs font-semibold px-3 py-1 rounded-full;
+  }
+  .badge-yellow {
+    @apply bg-yellow-100 text-yellow-700 text-xs font-semibold px-3 py-1 rounded-full;
   }
 }
 
@@ -39,4 +72,21 @@ html { scroll-behavior: smooth; }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-thumb { @apply bg-primary-400 rounded-full; }
+::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 10px; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
