@@ -19,7 +19,7 @@ const Dashboard = () => {
   const fetchStats = async () => {
     try {
       const token    = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/reports", {
+      const response = await fetch("config.API_URL/reports", {
         headers: { "Authorization": `Bearer ${token}` },
       });
       const data = await response.json();

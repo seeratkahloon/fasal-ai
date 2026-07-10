@@ -32,7 +32,7 @@ const Chat = () => {
       const token = localStorage.getItem("token");
       console.log("Sending chat message...", userText);
       
-      const response = await fetch("http://localhost:5000/api/chat", {
+      const response = await fetch("config.API_URL/chat", {
         method:  "POST",
         headers: {
           "Content-Type":  "application/json",

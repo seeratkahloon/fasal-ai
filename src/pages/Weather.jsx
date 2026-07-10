@@ -13,7 +13,7 @@ const Weather = () => {
     setError("");
     try {
       const token    = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/weather?city=${searchCity || city}`, {
+      const response = await fetch(`config.API_URL/weather?city=${searchCity || city}`, {
         headers: { "Authorization": `Bearer ${token}` },
       });
       const data = await response.json();

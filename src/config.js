@@ -1,5 +1,5 @@
 const config = {
-  API_URL: "http://localhost:5000/api",
+  API_URL: "https://your-app-name.b4a.run/api",
 };
 
 export default config;
