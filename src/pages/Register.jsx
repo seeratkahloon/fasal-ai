@@ -26,15 +26,17 @@ const Register = () => {
     if (Object.keys(e2).length) { setErrors(e2); return; }
     setLoading(true);
     try {
-      const response = await fetch("config.API_URL/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch(`${config.API_URL}/auth/register`, {
+       method: "POST",
+       headers: {
+       "Content-Type": "application/json",
+    },
         body: JSON.stringify({
-          name:     form.name,
-          email:    form.email,
-          password: form.password,
-          cropType: form.cropType,
-        }),
+         name: form.name,
+         email: form.email,
+         password: form.password,
+         cropType: form.cropType,
+       }),
       });
       const data = await response.json();
       if (data.success) {
