@@ -23,7 +23,7 @@ const History = () => {
   const fetchReports = async () => {
     try {
       const token    = localStorage.getItem("token");
-      const response = await fetch("config.API_URL/api/reports", {
+      const response = await fetch(`${config.API_URL}/api/reports`, {
         headers: { "Authorization": `Bearer ${token}` },
       });
       const data = await response.json();

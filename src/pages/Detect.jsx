@@ -54,7 +54,7 @@ const Detect = () => {
       formData.append("cropType",    cropType);
       formData.append("description", description);
 
-      const response = await fetch("config.API_URL/reports/detect", {
+      const response = await fetch(`${config.API_URL}/reports/detect`, {
         method:  "POST",
         headers: { "Authorization": `Bearer ${token}` },
         body:    formData,
