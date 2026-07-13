@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaSeedling } from "react-icons/fa";
+import config from "../config";
 
 const Login = () => {
   const [form, setForm]         = useState({ email: "", password: "" });

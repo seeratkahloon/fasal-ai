@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { FaArrowLeft, FaDownload, FaCheckCircle, FaLeaf, FaSpinner } from "react-icons/fa";
 import jsPDF from "jspdf";
-
+import config from "../config";
 
 const ReportDetail = () => {
   const { id } = useParams();
