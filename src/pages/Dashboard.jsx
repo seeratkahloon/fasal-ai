@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaMicroscope, FaCloudSun, FaHistory, FaRobot, FaSeedling, FaUser } from "react-icons/fa";
+import config from "../config";
 
 const Dashboard = () => {
   const [user, setUser]       = useState(null);

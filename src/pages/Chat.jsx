@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaRobot, FaPaperPlane, FaLeaf, FaSpinner } from "react-icons/fa";
-
+import config from "../config";
 
 const suggestions = [
   "How do I treat leaf rust in wheat?",

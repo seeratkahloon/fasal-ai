@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUser, FaSeedling, FaMapMarkerAlt, FaEnvelope, FaSave } from "react-icons/fa";
+import config from "../config";
 
 const cropTypes = ["Wheat (گندم)", "Rice (چاول)", "Sugarcane (گنا)", "Cotton (کپاس)", "Maize (مکئی)", "Vegetables (سبزیاں)", "Fruits (پھل)", "Other"];
 
