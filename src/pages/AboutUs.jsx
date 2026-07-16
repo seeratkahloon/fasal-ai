@@ -45,7 +45,7 @@ const AboutUs = () => (
 
     {/* Stats */}
     <div className="max-w-4xl mx-auto px-6 -mt-8 relative z-10">
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm grid grid-cols-3 divide-x divide-gray-100">
+      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm grid grid-cols-3 divide-y sm:divide-x divide-gray-100">
         {stats.map((s) => (
           <div key={s.label} className="py-6 text-center">
             <p className="font-display font-bold text-2xl text-gray-900">{s.value}</p>

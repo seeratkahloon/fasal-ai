@@ -76,7 +76,7 @@ const Weather = () => {
                   {weather.forecast[0]?.icon || "🌤️"}
                 </div>
               </div>
-              <div className="grid grid-cols-3 gap-4 mt-8 border-t border-primary-500 pt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 border-t border-primary-500 pt-6">
                 <div className="flex items-center gap-2">
                   <FaTint className="text-primary-300" />
                   <div>
@@ -104,7 +104,7 @@ const Weather = () => {
             {/* 5-Day Forecast */}
             <div className="bg-white rounded-3xl shadow-md p-6">
               <h2 className="font-display font-bold text-gray-900 text-lg mb-4">5-Day Forecast</h2>
-              <div className="grid grid-cols-5 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                 {weather.forecast.map((f, i) => (
                   <div key={i} className="text-center bg-gray-50 rounded-2xl p-3">
                     <p className="text-xs text-gray-400 mb-2">{i === 0 ? "Today" : f.date}</p>

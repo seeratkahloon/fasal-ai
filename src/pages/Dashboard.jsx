@@ -81,7 +81,7 @@ const Dashboard = () => {
 
         {/* Stats */}
       
-        <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
             <p className="text-gray-400 text-xs font-medium mb-1">Total Scans</p>
             <p className="font-display text-3xl font-bold text-gray-900">

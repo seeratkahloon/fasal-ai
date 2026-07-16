@@ -45,7 +45,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 md:py-32 w-full">
         <div className="max-w-3xl">
 
           <span className="inline-flex items-center gap-2 bg-green-800 bg-opacity-80 text-green-300 text-xs font-semibold px-4 py-2 rounded-full mb-8">
@@ -53,12 +53,12 @@ const Hero = () => {
             Pakistan's #1 AI Crop Assistant
           </span>
 
-          <h1 className="font-display text-6xl md:text-7xl font-bold text-white leading-tight mb-6">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
             Smart Farming<br />
             <span className="text-green-400">Starts Here.</span>
           </h1>
 
-          <p className="text-green-100 text-xl leading-relaxed mb-10 max-w-xl">
+          <p className="text-green-100 text-base sm:text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
             Upload your crop photo and get instant AI-powered disease detection, treatment plans, and live weather advice — in Urdu or English.
           </p>
 
